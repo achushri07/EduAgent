@@ -1,4 +1,4 @@
-# EduAgent 🎓
+# EduAgent(Eklavya.me assessment)
 
 An agent-based AI pipeline that generates grade-appropriate educational content, reviews it for quality, and refines it if needed.
 
@@ -16,20 +16,26 @@ User Input → Generator Agent → Reviewer Agent → (Refiner) → UI Output
 
 ---
 
+## Screenshot
+
+<img width="1345" height="576" alt="image" src="https://github.com/user-attachments/assets/5dba89f3-7fd1-42c2-ab63-4c33e73b9cb4" />
+
+---
+
 ## Tech Stack
 
 | Layer | Tool |
 |---|---|
 | Backend | Python + Flask |
 | AI / Agents | LangChain + Groq (`llama-3.3-70b-versatile`) |
-| Frontend | HTML, CSS, Vanilla JS |
+| Frontend | HTML, CSS, JS |
 
 ---
 
 ## Project Structure
 
 ```
-eklavya_agent/
+EdyAgent/
 ├── app.py               # Flask app + both agents + pipeline logic
 ├── requirements.txt
 ├── .env                 # Your GROQ_API_KEY goes here
@@ -78,3 +84,7 @@ Open `http://localhost:7860` in your browser.
 ```json
 { "status": "pass | fail", "feedback": ["issue 1", "issue 2"] }
 ```
+
+---
+
+Developed by: Achintya Srivastawa
