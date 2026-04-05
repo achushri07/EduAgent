@@ -1,4 +1,4 @@
-# EduAgent(Eklavya.me assessment)
+# EduAgent (Eklavya.me assessment)
 
 An agent-based AI pipeline that generates grade-appropriate educational content, reviews it for quality, and refines it if needed.
 
