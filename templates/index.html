@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduAgent — AI Content Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- Background grid -->
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">EduAgent</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <p class="logo-sub">AI Content Pipeline · Generator ⟶ Reviewer ⟶ Refiner</p>
+  </header>
+
+  <main class="main">
+
+    <!-- ── CONTROL PANEL ── -->
+    <section class="panel control-panel" id="control-panel">
+      <div class="panel-label">01 / INPUT</div>
+      <h2 class="panel-title">Define Your Content</h2>
+
+      <div class="form-row">
+        <div class="field-group">
+          <label for="grade-input" class="field-label">Grade Level</label>
+          <input
+            id="grade-input"
+            type="number"
+            min="1"
+            max="12"
+            value="4"
+            class="field-input"
+            placeholder="1–12"
+          />
+        </div>
+        <div class="field-group field-group--wide">
+          <label for="topic-input" class="field-label">Topic</label>
+          <input
+            id="topic-input"
+            type="text"
+            class="field-input"
+            placeholder="e.g. Types of angles, Photosynthesis, The water cycle…"
+          />
+        </div>
+      </div>
+
+      <button id="run-btn" class="run-btn">
+        <span class="run-btn__text">Run Pipeline</span>
+        <span class="run-btn__icon">▶</span>
+      </button>
+    </section>
+
+    <!-- ── PIPELINE STAGES (hidden until results arrive) ── -->
+    <div id="pipeline" class="pipeline hidden">
+
+      <!-- Progress bar -->
+      <div class="progress-track">
+        <div class="progress-step" id="step-gen">
+          <div class="step-dot"></div>
+          <span>Generating</span>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" id="step-rev">
+          <div class="step-dot"></div>
+          <span>Reviewing</span>
+        </div>
+        <div class="progress-line" id="line-refine"></div>
+        <div class="progress-step" id="step-ref">
+          <div class="step-dot"></div>
+          <span>Refining</span>
+        </div>
+      </div>
+
+      <!-- Stage A: Generator Output -->
+      <section class="panel stage-panel" id="stage-generated">
+        <div class="panel-label stage-tag stage-tag--gen">GENERATOR AGENT</div>
+        <h2 class="panel-title">Draft Content</h2>
+        <div class="content-block" id="gen-explanation"></div>
+        <div class="mcq-list" id="gen-mcqs"></div>
+      </section>
+
+      <!-- Stage B: Reviewer Feedback -->
+      <section class="panel stage-panel" id="stage-review">
+        <div class="panel-label stage-tag stage-tag--rev">REVIEWER AGENT</div>
+        <h2 class="panel-title">Quality Review</h2>
+        <div class="verdict" id="review-verdict"></div>
+        <ul class="feedback-list" id="review-feedback"></ul>
+      </section>
+
+      <!-- Stage C: Refined Output (conditional) -->
+      <section class="panel stage-panel hidden" id="stage-refined">
+        <div class="panel-label stage-tag stage-tag--ref">REFINER PASS</div>
+        <h2 class="panel-title">Refined Content</h2>
+        <div class="content-block" id="ref-explanation"></div>
+        <div class="mcq-list" id="ref-mcqs"></div>
+      </section>
+
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loader" class="loader hidden">
+      <div class="loader-inner">
+        <div class="spinner"></div>
+        <p class="loader-text" id="loader-text">Initialising agents…</p>
+      </div>
+    </div>
+
+    <!-- Error banner -->
+    <div id="error-banner" class="error-banner hidden">
+      <span id="error-msg"></span>
+      <button class="error-close" id="error-close">✕</button>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>EduAgent · Agent-Based AI Pipeline</span>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
